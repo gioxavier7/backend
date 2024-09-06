@@ -5,20 +5,14 @@
 * versão: 1.0
 */
 
+// forma tradicional de criar função
 function gerarNumeros(numeroInicial, numeroFinal){
     let numeroI = numeroInicial
     let numeroF = numeroFinal
     let contador
     let status = false
 
-    // validação de dados em branco
-    if(numeroI == '' || numeroF == ''){
-        console.log('ERRO: é obrigatório a entrada de todos os números.')
-
-    // validação de dados caracteres inválidos
-    }else if(isNaN(numeroI) || isNaN(numeroF)){
-        console.log('ERRO: não é permitido a entrada de carácter.')
-    }else{
+    if(validarDados(numeroI, numeroF)){
         contador = parseInt(numeroI)
 
         while(contador <= parseInt(numeroF)){
@@ -31,4 +25,41 @@ function gerarNumeros(numeroInicial, numeroFinal){
 return status
 }
 
-gerarNumeros(1, 10)
+// arrow function
+const gerarNovosNumeros = (numeroInicial, numeroFinal) => {
+    let numeroI = numeroInicial
+    let numeroF = numeroFinal
+    let status = false
+
+    if(validarDados(numeroI, numeroF)){
+        for(let contador = parseInt(numeroI); contador <= parseInt(numeroF); contador++){
+            status = true
+            console.log(contador)
+        }
+    }
+    return status
+}
+
+// função anonima
+const validarDados = function(numeroInicial, numeroFinal){
+    let numeroI = numeroInicial
+    let numeroF = numeroFinal
+    let status = true
+    
+    // validação de dados em branco
+    if(numeroI == '' || numeroF == ''){
+        console.log('ERRO: é obrigatório a entrada de todos os números.')
+        status = false
+
+    // validação de dados caracteres inválidos
+    }else if(isNaN(numeroI) || isNaN(numeroF)){
+        console.log('ERRO: não é permitido a entrada de carácter.')
+        status = false 
+    }
+    return status
+}
+
+module.exports = {
+    gerarNumeros,
+    gerarNovosNumeros
+}
