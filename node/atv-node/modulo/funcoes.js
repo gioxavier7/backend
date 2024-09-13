@@ -55,79 +55,108 @@ function calcularIMC(peso, altura){
     return status
 }
 
-//validar dados da média
-function validarDadosMedia(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, nomeCurso, nomeDisciplina, valor1, valor2, valor3, valor4){
-    let aluno = nomeAluno
-    let professor = nomeProfessor
-    let sexoP = sexoProfessor
-    let sexoA = sexoAluno
-    let curso = nomeCurso
-    let disciplina = nomeDisciplina
-    let nota1 = valor1
-    let nota2 = valor2
-    let nota3 = valor3
-    let nota4 = valor4
+// Função para validar dados da média
+function validarDadosMedia(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, nomeCurso, nomeDisciplina, valor1, valor2, valor3, valor4) {
+    let aluno = nomeAluno;
+    let professor = nomeProfessor;
+    let sexoP = sexoProfessor;
+    let sexoA = sexoAluno;
+    let curso = nomeCurso;
+    let disciplina = nomeDisciplina;
+    let nota1 = valor1;
+    let nota2 = valor2;
+    let nota3 = valor3;
+    let nota4 = valor4;
 
-    //validar dados em branco
-    if(aluno == '' || professor == '' || sexoP == '' || sexoA == '' || curso == '' || disciplina == ''
-        || nota1 == '' || nota2 == '' || nota3 == '' || nota4 == ''){
-        console.log('ERRO: é obrigatório o preenchimento de todos os dados.')
-        return false
+    // Validar dados em branco
+    if (aluno === '' || professor === '' || sexoP === '' || sexoA === '' || curso === '' || disciplina === '' ||
+        nota1 === '' || nota2 === '' || nota3 === '' || nota4 === '') {
+        console.log('ERRO: é obrigatório o preenchimento de todos os dados.');
+        return false;
 
-    //verifica se as notas são números
-    }else if(isNaN(nota1) || isNaN(nota2) || isNaN(nota3) || isNaN(nota4)){
-        console.log('ERRO: é obrigatório a entrada de dados numéricos nas notas.')
-        return false
+    // Verifica se as notas são números
+    } else if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3) || isNaN(nota4)) {
+        console.log('ERRO: é obrigatório a entrada de dados numéricos nas notas.');
+        return false;
 
-    // verifica se as notas estão entre 0 e 100
-    }else if(nota1 < 0 || nota1 > 100 || nota2 < 0 || nota2 > 100 || nota3 < 0 || nota3 > 100 || nota4 < 0 || nota4 > 100){
-        console.log('ERRO: permitido somente valores entre 0 e 100 nas notas.')
-        return
+    // Verifica se as notas estão entre 0 e 100
+    } else if (nota1 < 0 || nota1 > 100 || nota2 < 0 || nota2 > 100 || nota3 < 0 || nota3 > 100 || nota4 < 0 || nota4 > 100) {
+        console.log('ERRO: permitido somente valores entre 0 e 100 nas notas.');
+        return false;
     }
-    return true
+    return true;
 }
 
-function validarNotaExame(exame){
-    let notaExame = exame
+// Função para validar a nota do exame
+function validarNotaExame(exame) {
+    let notaExame = exame;
 
-    //validar entrada vazia
-    if(notaExame == ''){
-        console.log('ERRO: é obrigatório o preenchimendo solicitado.')
-        return false
+    // Validar entrada vazia
+    if (notaExame === '') {
+        console.log('ERRO: é obrigatório o preenchimento solicitado.');
+        return false;
 
-    //validar se é número
-    }else if(isNaN(notaExame)){
-        console.log('ERRO: só é permitido a entrada de números.')
-        return false
+    // Validar se é número
+    } else if (isNaN(notaExame)) {
+        console.log('ERRO: só é permitido a entrada de números.');
+        return false;
 
-    //validar se a nota está entre 0 e 100
-    }else if(notaExame < 0 || notaExame > 100){
-        console.log('ERRO: a nota deve ser entre 0 e 100.')
-        return false
+    // Validar se a nota está entre 0 e 100
+    } else if (notaExame < 0 || notaExame > 100) {
+        console.log('ERRO: a nota deve ser entre 0 e 100.');
+        return false;
     }
-    return true
+    return true;
 }
 
-// função para gerenciar média
-function calcularMedia(valor1, valor2, valor3, valor4){
-    let nota1 = valor1
-    let nota2 = valor2
-    let nota3 = valor3
-    let nota4 = valor4
-    let situacao
-    let resultado
+// Função para calcular a média após o exame
+function calcularExame(exame, mediaAnterior) {
+    const mediaFinal = (mediaAnterior + Number(exame)) / 2;
+    if (mediaFinal >= 60) {
+        console.log('Aprovado no exame.');
+        return 'Aprovado no exame';
+    } else {
+        console.log('Reprovado no exame.');
+        return 'Reprovado no exame';
+    }
+}
 
-    if(validarDadosMedia(nota1, nota2, nota3, nota4)){
-        //calculo da média
-        resultado = (Number(nota1) + Number(nota2) + Number(nota3) + Number(nota4)) / 4
+//função para relatório
+function exibirRelatorio(){}
 
-        //verificar a situação do aluno
-        if(resultado > 70){
-            situacao = 'Aprovado.'
-        }else if(resultado < 50){
-            situacao = 'Reprovado.'
-        }else if(resultado >= 50 && resultado <= 69){
-            situacao = 'Em exame.'
+// Função para gerenciar a média - // se notaExame for null, significa que o aluno não fez exame
+function calcularMedia(valor1, valor2, valor3, valor4, notaExame = null) {
+    let nota1 = valor1;
+    let nota2 = valor2;
+    let nota3 = valor3;
+    let nota4 = valor4;
+    let situacao;
+    let mediaNota;
+    let status = false
+
+    // Valida as notas antes de calcular a média
+    if (validarDadosMedia("Aluno", "Professor", "M", "M", "Curso", "Disciplina", nota1, nota2, nota3, nota4)) {
+        // Cálculo da média
+        mediaNota = (Number(nota1) + Number(nota2) + Number(nota3) + Number(nota4)) / 4
+        status = true
+
+        // Verifica a situação do aluno
+        if (mediaNota > 70) {
+            situacao = 'Aprovado.';
+        } else if (mediaNota < 50) {
+            situacao = 'Reprovado.';
+        } else if (mediaNota >= 50 && mediaNota <= 69) {
+            situacao = 'Em exame.';
+
+            // Exame - se a nota do exame foi fornecida, realiza o cálculo
+            if (notaExame !== null && validarNotaExame(notaExame)) {
+                situacao = calcularExame(notaExame, mediaNota);
+            } else {
+                console.log('Nota do exame inválida ou não fornecida.');
+            }
         }
+
+        console.log(`Média Final: ${mediaNota}\nSituação: ${situacao}`);
     }
+    return status
 }
