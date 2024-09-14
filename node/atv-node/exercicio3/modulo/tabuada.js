@@ -53,3 +53,5 @@ function processarTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contado
 
     return calcularTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal)
 }
+
+module.exports = {processarTabuada}
