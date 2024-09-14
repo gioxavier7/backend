@@ -145,3 +145,5 @@ function processarNotas(nomeAluno, sexoAluno, nomeProfessor, sexoProfessor, nome
         return 'Erro ao processar'
     }
 }
+
+module.exports = {processarNotas}
