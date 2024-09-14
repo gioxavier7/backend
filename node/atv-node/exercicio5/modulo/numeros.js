@@ -79,3 +79,5 @@ function processarNumeros(numeroInicial, numeroFinal, opcao) {
 
     return mensagem
 }
+
+module.exports = {processarNumeros}
