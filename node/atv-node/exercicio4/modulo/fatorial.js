@@ -41,3 +41,5 @@ function processarFatorial(entrada) {
     var resultado = calcularFatorial(numero)
     return 'Fatorial de ' + numero + ' é ' + resultado + '.'
 }
+
+module.exports = {processarFatorial}
