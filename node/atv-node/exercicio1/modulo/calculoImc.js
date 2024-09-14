@@ -62,5 +62,3 @@ function processarImc(peso, altura) {
     }
     return false
 }
-
-console.log(processarImc(53, 1.63))

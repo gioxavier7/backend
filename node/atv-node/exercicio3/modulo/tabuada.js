@@ -48,7 +48,7 @@ function calcularTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contador
 function processarTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal) {
     var validacao = validarEntradas(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal)
     if (validacao !== true) {
-        return validacao  // se a validação falhar, retorna a mensagem de erro
+        return validacao  //se a validação falhar, retorna a mensagem de erro
     }
 
     return calcularTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal)

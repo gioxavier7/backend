@@ -37,7 +37,7 @@ function validarDadosMedia(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, n
 // Função para validar a nota do exame
 function validarNotaExame(exame) {
     let status = true
-    
+
     //substitui vírgula por ponto
     exame = exame.toString().replace(',', '.')
 
@@ -145,18 +145,3 @@ function processarNotas(nomeAluno, sexoAluno, nomeProfessor, sexoProfessor, nome
         return 'Erro ao processar'
     }
 }
-
-// Exemplo de chamada da função
-console.log(processarNotas(
-    "Gabriel Soares",        // Nome do aluno
-    "M",                     // Sexo do aluno
-    "Carlos",                // Nome do professor
-    "M",                     // Sexo do professor
-    "Matemática",            // Curso
-    "Geometria",             // Disciplina
-    100,                      // Nota 1
-    90,                      // Nota 2
-    89,                      // Nota 3
-    90.5,                      // Nota 4
-                       // Nota do exame (opcional, se houver)
-))
