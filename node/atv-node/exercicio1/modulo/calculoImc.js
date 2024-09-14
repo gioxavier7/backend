@@ -62,3 +62,5 @@ function processarImc(peso, altura) {
     }
     return false
 }
+
+module.exports = {processarImc}
