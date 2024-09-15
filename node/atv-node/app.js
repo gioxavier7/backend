@@ -15,7 +15,7 @@ var exercicio5 = require('./exercicio5/modulo/numeros.js')
 //função do menu
 function mostrarMenu(){
     console.log('Escolha uma das funcionalidades a seguir:')
-    console.log('1- Cálculo IMC\n2- Controle de Notas\n3- Tabuada\n4- Fatorial\n5- Par e Ímpar')
+    console.log('1- Cálculo IMC\n2- Controle de Notas\n3- Tabuada\n4- Fatorial\n5- Par e Ímpar\n6- Sair')
 
     var readline = require('readline')
 
@@ -31,8 +31,10 @@ function mostrarMenu(){
         if(isNaN(operacaoEscolhida)){
             console.log('ERRO: só é permitido a entrada de números.')
             entradaDeDados.close()
-        }else if(operacaoEscolhida < 1 || operacaoEscolhida > 5){
+        }else if(operacaoEscolhida < 1 || operacaoEscolhida > 6){
             console.log('ERRO: escolha inválida.')
+            entradaDeDados.close()
+            mostrarMenu()
         }
 
         //tratamento da opção escolhida
@@ -44,8 +46,10 @@ function mostrarMenu(){
                 entradaDeDados.question('Digite sua altura: ', function(altura){
 
                     //chama a função
-                    let resultado = exercicio1.processarImc(peso, altura)
+                    let resultado = exercicio1.processarImc(Number(peso), Number(altura))
                     console.log(resultado)
+                    entradaDeDados.close()
+                    mostrarMenu()
                 })
             })
         }else if(operacaoEscolhida == '2'){
@@ -54,10 +58,12 @@ function mostrarMenu(){
             entradaDeDados.question('Nome do aluno: ', function(nomeAluno){
 
                 entradaDeDados.question('Sexo do aluno (F/M): ', function(sexoAluno){
+                    sexoAluno = sexoAluno.toUpperCase()
 
                     entradaDeDados.question('Nome do professor: ', function(nomeProfessor){
 
                         entradaDeDados.question('Sexo do professor (F/M): ', function(sexoProfessor){
+                            sexoProfessor = sexoProfessor.toUpperCase()
 
                             entradaDeDados.question('Curso: ', function(nomeCurso){
 
@@ -71,12 +77,20 @@ function mostrarMenu(){
 
                                                 entradaDeDados.question('Nota 4: ', function(nota4){
 
-                                                    entradaDeDados.question('Nota do exame: ', function(notaExame){
+                                                    let resultado = exercicio2.processarNotas(nomeAluno, sexoAluno, nomeProfessor, sexoProfessor, nomeCurso, nomeDisciplina, Number(nota1), Number(nota2), Number(nota3), Number(nota4))
+                                                    console.log(resultado)
 
-                                                        let resultado = exercicio2.processarNotas(nomeAluno, sexoAluno, nomeProfessor, sexoProfessor, nomeCurso, nomeDisciplina, nota1, nota2, nota3, nota4, notaExame)
-                                                        console.log(resultado)
-                                                    })
-
+                                                    if (resultado === 'Em exame') {
+                                                        entradaDeDados.question('Digite a nota do exame: ', function(notaExame){
+                                                            let resultadoFinal = exercicio2.processarNotas(nomeAluno, sexoAluno, nomeProfessor, sexoProfessor, nomeCurso, nomeDisciplina, Number(nota1), Number(nota2), Number(nota3), Number(nota4), Number(notaExame))
+                                                            console.log(resultadoFinal)
+                                                            entradaDeDados.close()
+                                                            mostrarMenu()
+                                                        })
+                                                    }else{
+                                                        entradaDeDados.close()
+                                                        mostrarMenu()
+                                                    }
                                                 })
 
                                             })
@@ -86,6 +100,51 @@ function mostrarMenu(){
                                 })
                             })
                         })
+                    })
+                })
+            })
+        }else if(operacaoEscolhida == '3'){
+            console.log('Tabuada')
+
+            entradaDeDados.question('Tabuada inicial (entre 2 e 100): ', function(tabuadaInicial){
+
+                entradaDeDados.question('Tabuada final: ', function(tabuadaFinal){
+
+                    entradaDeDados.question('Contador inicial (entre 1 e 50): ', function(contadorInicial){
+
+                        entradaDeDados.question('Contador final: ', function(contadorFinal){
+
+                            let resultado = exercicio3.processarTabuada(Number(tabuadaInicial), Number(tabuadaFinal), Number(contadorInicial), Number(contadorFinal))
+                            console.log(resultado)
+                            entradaDeDados.close()
+                            mostrarMenu()
+                        })
+                    })
+                })
+            })
+        }else if(operacaoEscolhida == '4'){
+            console.log('Fatorial')
+
+            entradaDeDados.question('Digite o fatorial que deseja calcular: ', function(entradaFatorial){
+
+                let resultado = exercicio4.processarFatorial(Number(entradaFatorial))
+                console.log(resultado)
+                entradaDeDados.close()
+                mostrarMenu()
+            })
+        }else if(operacaoEscolhida == '5'){
+            console.log('Pares e Ímpares')
+
+            entradaDeDados.question('Número inicial: ', function(numeroInicial){
+
+                entradaDeDados.question('Número final: ', function(numeroFinal){
+
+                    entradaDeDados.question('Opção (ambos, pares ou ímpares): ', function(opcao){
+
+                        let resultado = exercicio5.processarNumeros(Number(numeroInicial), Number(numeroFinal), opcao)
+                        console.log(resultado)
+                        entradaDeDados.close()
+                        mostrarMenu()
                     })
                 })
             })

@@ -25,14 +25,14 @@ function validarEntradas(tabuadaInicial, tabuadaFinal, contadorInicial, contador
 
 //função para calcular a tabuada
 function calcularTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal) {
-    var resultado = ''  //guardando o resultado
+    let resultado = ''  //guardando o resultado
 
-    var tabuada = tabuadaInicial
-    while (tabuada <= tabuadaFinal) {
-        var contador = contadorInicial
+    let tabuada = tabuadaInicial
+    while (tabuada <= tabuadaFinal){
+        let contador = contadorInicial
         resultado += 'Tabuada do ' + tabuada + ':\n'
 
-        while (contador <= contadorFinal) {
+        while (contador <= contadorFinal){
             resultado += tabuada + ' x ' + contador + ' = ' + (tabuada * contador) + '\n'
             contador++
         }
@@ -46,12 +46,11 @@ function calcularTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contador
 
 //função principal de processamento
 function processarTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal) {
-    var validacao = validarEntradas(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal)
-    if (validacao !== true) {
+    let validacao = validarEntradas(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal)
+    if (validacao !== true){
         return validacao  //se a validação falhar, retorna a mensagem de erro
     }
 
     return calcularTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal)
 }
-
 module.exports = {processarTabuada}

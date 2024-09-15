@@ -72,7 +72,7 @@ function processarNumeros(numeroInicial, numeroFinal, opcao) {
         mensagem += 'Números Pares: ' + resultados.pares + '\n'
         mensagem += 'Quantidade de Números Pares: ' + resultados.contagemPares + '\n'
     }
-    if (opcao === 'impares' || opcao === 'ambos') {
+    if (opcao === 'ímpares' || opcao === 'ambos') {
         mensagem += 'Números Ímpares: ' + resultados.impares + '\n'
         mensagem += 'Quantidade de Números Ímpares: ' + resultados.contagemImpares + '\n'
     }

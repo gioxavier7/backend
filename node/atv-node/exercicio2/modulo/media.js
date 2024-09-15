@@ -75,16 +75,21 @@ function calcularSituacao(mediaNota, notaExame = null) {
     let mediaFinalExame = null
 
     if (mediaNota >= 70) {
-        situacao = 'aprovado(a)'
+        situacao = 'Aprovado(a)'
     } else if (mediaNota < 50) {
-        situacao = 'reprovado(a)'
+        situacao = 'Reprovado(a)'
     } else if (mediaNota >= 50 && mediaNota <= 69) {
-        situacao = 'em exame'
+        situacao = 'Em exame'
 
         // Exame - se a nota do exame foi fornecida, realiza o cálculo
         if (notaExame !== null && validarNotaExame(notaExame)) {
             mediaFinalExame = calcularExame(notaExame, mediaNota)
-            situacao = mediaFinalExame >= 60 ? 'aprovado(a) no exame' : 'reprovado(a) no exame'
+            
+            if (mediaFinalExame >= 60) {
+                situacao = 'aprovado(a) no exame'
+            } else {
+                situacao = 'reprovado(a) no exame'
+            }
         }
     }
 
@@ -111,7 +116,7 @@ function exibirRelatorio(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, nom
     }
 
     console.log(`Relatório do aluno:`)
-    console.log(`${generoAluno} ${nomeAluno} foi ${situacao} na disciplina ${nomeDisciplina}.`)
+    console.log(`${generoAluno} ${nomeAluno} está ${situacao} na disciplina ${nomeDisciplina}.`)
     console.log(`Curso: ${nomeCurso}`)
     console.log(`${generoProfessor}: ${nomeProfessor}`)
     console.log(`Notas: ${nota1}, ${nota2}, ${nota3}, ${nota4}`)

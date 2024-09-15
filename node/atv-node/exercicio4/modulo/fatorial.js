@@ -30,20 +30,20 @@ function calcularFatorial(numero){
 }
 
 //função principal de processamento
-function processarFatorial(entrada){
-    let validacao = validarEntrada(entrada)
+function processarFatorial(entradaFatorial){
+    let validacao = validarEntrada(entradaFatorial)
     if (validacao !== true){
         return validacao
     }
 
-    let numero = Number(entrada)
+    let numero = Number(entradaFatorial)
     if (numero === 1){
         console.log('Não é possível calcular o fatorial de 1. O número deve ser maior do que 1.')
         return false
     }
 
     let resultado = calcularFatorial(numero)
-    return 'Fatorial de' + numero + 'é' + resultado + '.'
+    return 'Fatorial de ' + numero + ' é ' + resultado + '.'
 }
 
 module.exports = {processarFatorial}
