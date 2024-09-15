@@ -1,24 +1,27 @@
 // Função de validação dos dados
-function validarEntrada(numero) {
-    if (numero === '') {
-        return 'A entrada não pode estar vazia.'
+function validarEntrada(numero){
+    if (numero === ''){
+        console.log('A entrada não pode estar vazia.')
+        return false
     }
-    if (isNaN(numero)) {
-        return 'A entrada deve ser um número válido.'
+    if (isNaN(numero)){
+        console.log('A entrada deve ser um número válido.')
+        return false
     }
-    numero = Number(numero) // Converte para número
-    if (numero < 1) {
-        return 'Não existe fatorial de 0 e o número deve ser maior do que 1.'
+    numero = Number(numero)
+    if (numero < 1){
+        console.log('Não existe fatorial de 0 e o número deve ser maior do que 1.')
+        return false
     }
-    return true // Retorna true se a validação estiver correta
+    return true
 }
 
 // Função para calcular o fatorial
-function calcularFatorial(numero) {
-    var fatorial = 1 // Inicializa o resultado
+function calcularFatorial(numero){
+    let fatorial = 1 //inicia o resultado
 
-    var valor = numero
-    while (valor > 1) {
+    let valor = numero
+    while (valor > 1){
         fatorial *= valor
         valor-- //decrementa (valor++ valor--)
     }
@@ -26,20 +29,21 @@ function calcularFatorial(numero) {
     return fatorial
 }
 
-// Função principal de processamento
-function processarFatorial(entrada) {
-    var validacao = validarEntrada(entrada)
-    if (validacao !== true) {
+//função principal de processamento
+function processarFatorial(entrada){
+    let validacao = validarEntrada(entrada)
+    if (validacao !== true){
         return validacao
     }
 
-    var numero = Number(entrada)
-    if (numero === 1) {
-        return 'Não é possível calcular o fatorial de 1. O número deve ser maior do que 1.'
+    let numero = Number(entrada)
+    if (numero === 1){
+        console.log('Não é possível calcular o fatorial de 1. O número deve ser maior do que 1.')
+        return false
     }
 
-    var resultado = calcularFatorial(numero)
-    return 'Fatorial de ' + numero + ' é ' + resultado + '.'
+    let resultado = calcularFatorial(numero)
+    return 'Fatorial de' + numero + 'é' + resultado + '.'
 }
 
 module.exports = {processarFatorial}
