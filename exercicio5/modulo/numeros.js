@@ -1,4 +1,4 @@
-// Função de validação das entradas
+// função de validação das entradas
 function validarEntradas(numeroInicial, numeroFinal) {
     if (numeroInicial === '' || numeroFinal === '') {
         console.log('Ambas as entradas devem ser preenchidas.')
@@ -58,11 +58,11 @@ function calcularParesImpares(numeroInicial, numeroFinal) {
     }
 }
 
-// Função principal de processamento
+// função principal de processamento
 function processarNumeros(numeroInicial, numeroFinal, opcao) {
     let validacao = validarEntradas(numeroInicial, numeroFinal)
     if (validacao !== true) {
-        return validacao // Retorna a mensagem de erro se a validação falhar
+        return validacao // retorna a mensagem de erro se a validação falhar
     }
 
     let resultados = calcularParesImpares(Number(numeroInicial), Number(numeroFinal))

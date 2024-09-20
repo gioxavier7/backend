@@ -1,4 +1,4 @@
-// Função de validação dos dados
+// função de validação dos dados
 function validarEntradas(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal) {
     if (isNaN(tabuadaInicial) || isNaN(tabuadaFinal) || isNaN(contadorInicial) || isNaN(contadorFinal)) {
         console.log('Todos os valores devem ser numéricos.')

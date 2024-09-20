@@ -1,4 +1,4 @@
-// Função de validação dos dados
+// função de validação dos dados
 function validarEntrada(numero){
     if (numero === ''){
         console.log('A entrada não pode estar vazia.')
@@ -16,7 +16,7 @@ function validarEntrada(numero){
     return true
 }
 
-// Função para calcular o fatorial
+// função para calcular o fatorial
 function calcularFatorial(numero){
     let fatorial = 1 //inicia o resultado
 

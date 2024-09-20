@@ -5,7 +5,7 @@
 * versão: 1.0
 */
 
-// Função para validar dados da média
+// função para validar dados da média
 function validarDadosMedia(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, nomeCurso, nomeDisciplina, valor1, valor2, valor3, valor4) {
     let status = true
 
@@ -15,18 +15,18 @@ function validarDadosMedia(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, n
     valor3 = valor3.toString().replace(',', '.')
     valor4= valor4.toString().replace(',', '.')
 
-    // Validar dados em branco
+    // validar dados em branco
     if (nomeAluno === '' || nomeProfessor === '' || sexoProfessor === '' || sexoAluno === '' || nomeCurso === '' || nomeDisciplina === '' ||
         valor1 === '' || valor2 === '' || valor3 === '' || valor4 === '') {
         console.log('ERRO: é obrigatório o preenchimento de todos os dados.')
         status = false
 
-    // Verifica se as notas são números
+    // verifica se as notas são números
     } else if (isNaN(valor1) || isNaN(valor2) || isNaN(valor3) || isNaN(valor4)) {
         console.log('ERRO: é obrigatório a entrada de dados numéricos nas notas.')
         status = false
 
-    // Verifica se as notas estão entre 0 e 100
+    // verifica se as notas estão entre 0 e 100
     } else if (valor1 < 0 || valor1 > 100 || valor2 < 0 || valor2 > 100 || valor3 < 0 || valor3 > 100 || valor4 < 0 || valor4 > 100) {
         console.log('ERRO: permitido somente valores entre 0 e 100 nas notas.')
         status = false
@@ -34,24 +34,24 @@ function validarDadosMedia(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, n
     return status
 }
 
-// Função para validar a nota do exame
+// função para validar a nota do exame
 function validarNotaExame(exame) {
     let status = true
 
     //substitui vírgula por ponto
     exame = exame.toString().replace(',', '.')
 
-    // Validar entrada vazia
+    // validar entrada vazia
     if (exame === '') {
         console.log('ERRO: é obrigatório o preenchimento solicitado.')
         status = false
 
-    // Validar se é número
+    // validar se é número
     } else if (isNaN(exame)) {
         console.log('ERRO: só é permitido a entrada de números.')
         status = false
 
-    // Validar se a nota está entre 0 e 100
+    // validar se a nota está entre 0 e 100
     } else if (exame < 0 || exame > 100) {
         console.log('ERRO: a nota deve ser entre 0 e 100.')
         status = false
@@ -59,17 +59,17 @@ function validarNotaExame(exame) {
     return status
 }
 
-// Função para calcular a média após o exame
+// função para calcular a média após o exame
 function calcularExame(exame, mediaAnterior) {
     return (mediaAnterior + Number(exame)) / 2
 }
 
-// Função para calcular a média do aluno
+// função para calcular a média do aluno
 function calcularMedia(valor1, valor2, valor3, valor4) {
     return (Number(valor1) + Number(valor2) + Number(valor3) + Number(valor4)) / 4
 }
 
-// Função para determinar a situação do aluno
+// função para determinar a situação do aluno
 function calcularSituacao(mediaNota, notaExame = null) {
     let situacao
     let mediaFinalExame = null
@@ -81,7 +81,7 @@ function calcularSituacao(mediaNota, notaExame = null) {
     } else if (mediaNota >= 50 && mediaNota <= 69) {
         situacao = 'Em exame'
 
-        // Exame - se a nota do exame foi fornecida, realiza o cálculo
+        // exame - se a nota do exame foi fornecida, realiza o cálculo
         if (notaExame !== null && validarNotaExame(notaExame)) {
             mediaFinalExame = calcularExame(notaExame, mediaNota)
             
@@ -96,19 +96,19 @@ function calcularSituacao(mediaNota, notaExame = null) {
     return {situacao, mediaFinalExame}
 }
 
-// Função para exibir o relatório do aluno
+// função para exibir o relatório do aluno
 function exibirRelatorio(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, nomeCurso, nomeDisciplina, nota1, nota2, nota3, nota4, notaExame, mediaFinal, mediaFinalExame, situacao) {
     let generoAluno
     let generoProfessor
 
-    // Verifica o gênero do aluno
+    // verifica o gênero do aluno
     if (sexoAluno === 'F') {
         generoAluno = 'A aluna'
     } else {
         generoAluno = 'O aluno'
     }
 
-    // Verifica o gênero do professor
+    // verifica o gênero do professor
     if (sexoProfessor === 'F') {
         generoProfessor = 'Professora'
     } else {
@@ -131,19 +131,19 @@ function exibirRelatorio(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, nom
     }
 }
 
-// Função principal para processar o cálculo e exibir o relatório
+// função principal para processar o cálculo e exibir o relatório
 function processarNotas(nomeAluno, sexoAluno, nomeProfessor, sexoProfessor, nomeCurso, nomeDisciplina, nota1, nota2, nota3, nota4, notaExame = null) {
     if (validarDadosMedia(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, nomeCurso, nomeDisciplina, nota1, nota2, nota3, nota4)) {
-        // Calcula a média do aluno
+        // calcula a média do aluno
         let mediaNota = calcularMedia(nota1, nota2, nota3, nota4)
 
-        // Calcula a situação e a média final se houve exame
+        // calcula a situação e a média final se houve exame
         let {situacao, mediaFinalExame} = calcularSituacao(mediaNota, notaExame)
 
-        // Exibe o relatório
+        // exibe o relatório
         exibirRelatorio(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, nomeCurso, nomeDisciplina, nota1, nota2, nota3, nota4, notaExame, mediaNota, mediaFinalExame, situacao)
 
-        // Retorna a situação do aluno
+        // retorna a situação do aluno
         return situacao
     } else {
         console.log('Erro ao processar as notas. Verifique os dados fornecidos.')

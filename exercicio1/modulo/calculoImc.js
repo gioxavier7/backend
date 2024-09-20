@@ -5,7 +5,7 @@
 * versão: 1.1
 */
 
-// Função para validar os dados IMC
+// função para validar os dados IMC
 function validarDadosImc(peso, altura) {
     if (peso === '' || altura === '') {
         console.log("ERRO: é obrigatório a entrada dos dados.")
@@ -17,12 +17,12 @@ function validarDadosImc(peso, altura) {
     return true
 }
 
-// Função para converter o número para string, substituir a vírgula por ponto e converter de volta para número
+// função para converter o número para string, substituir a vírgula por ponto e converter de volta para número
 function converterVirgula(valor) {
     return parseFloat(valor.toString().replace(',', '.'))
 }
 
-// Função para calcular o IMC
+// função para calcular o IMC
 function calcularIMC(peso, altura) {
     const numeroPeso = converterVirgula(peso);
     const numeroAltura = converterVirgula(altura)
@@ -30,7 +30,7 @@ function calcularIMC(peso, altura) {
     return numeroPeso / (numeroAltura * numeroAltura)
 }
 
-// Função para verificar a categoria do IMC
+// função para verificar a categoria do IMC
 function verificarCategoriaImc(imc) {
     let categoriaImc
 
@@ -51,7 +51,7 @@ function verificarCategoriaImc(imc) {
     return categoriaImc
 }
 
-// Função principal para processar o cálculo do IMC e exibir o resultado
+// função principal para processar o cálculo do IMC e exibir o resultado
 function processarImc(peso, altura) {
     if (validarDadosImc(peso, altura)) {
         const imc = calcularIMC(peso, altura)
