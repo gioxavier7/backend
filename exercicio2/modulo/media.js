@@ -9,12 +9,6 @@
 function validarDadosMedia(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, nomeCurso, nomeDisciplina, valor1, valor2, valor3, valor4) {
     let status = true
 
-    //substituição de vírgula por ponto
-    valor1 = valor1.toString().replace(',', '.')
-    valor2 = valor2.toString().replace(',', '.')
-    valor3 = valor3.toString().replace(',', '.')
-    valor4= valor4.toString().replace(',', '.')
-
     // validar dados em branco
     if (nomeAluno === '' || nomeProfessor === '' || sexoProfessor === '' || sexoAluno === '' || nomeCurso === '' || nomeDisciplina === '' ||
         valor1 === '' || valor2 === '' || valor3 === '' || valor4 === '') {
@@ -133,7 +127,7 @@ function exibirRelatorio(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, nom
 
 // função principal para processar o cálculo e exibir o relatório
 function processarNotas(nomeAluno, sexoAluno, nomeProfessor, sexoProfessor, nomeCurso, nomeDisciplina, nota1, nota2, nota3, nota4, notaExame = null) {
-    if (validarDadosMedia(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, nomeCurso, nomeDisciplina, nota1, nota2, nota3, nota4)) {
+    if(validarDadosMedia(nomeAluno, nomeProfessor, sexoProfessor, sexoAluno, nomeCurso, nomeDisciplina, nota1, nota2, nota3, nota4)) {
         // calcula a média do aluno
         let mediaNota = calcularMedia(nota1, nota2, nota3, nota4)
 
@@ -145,7 +139,7 @@ function processarNotas(nomeAluno, sexoAluno, nomeProfessor, sexoProfessor, nome
 
         // retorna a situação do aluno
         return situacao
-    } else {
+    }else{
         console.log('Erro ao processar as notas. Verifique os dados fornecidos.')
         return 'Erro ao processar'
     }

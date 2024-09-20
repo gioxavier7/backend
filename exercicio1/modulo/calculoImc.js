@@ -7,25 +7,23 @@
 
 // função para validar os dados IMC
 function validarDadosImc(peso, altura) {
+    let status = true
+    
     if (peso === '' || altura === '') {
         console.log("ERRO: é obrigatório a entrada dos dados.")
-        return false
+        status = false
+
     } else if (isNaN(peso) || isNaN(altura)) {
         console.log("ERRO: não é permitido a entrada de caracteres.")
-        return false
+        status = false
     }
-    return true
-}
-
-// função para converter o número para string, substituir a vírgula por ponto e converter de volta para número
-function converterVirgula(valor) {
-    return parseFloat(valor.toString().replace(',', '.'))
+    return status
 }
 
 // função para calcular o IMC
 function calcularIMC(peso, altura) {
-    const numeroPeso = converterVirgula(peso);
-    const numeroAltura = converterVirgula(altura)
+    let numeroPeso = peso
+    let numeroAltura = altura
 
     return numeroPeso / (numeroAltura * numeroAltura)
 }
@@ -54,13 +52,14 @@ function verificarCategoriaImc(imc) {
 // função principal para processar o cálculo do IMC e exibir o resultado
 function processarImc(peso, altura) {
     if (validarDadosImc(peso, altura)) {
-        const imc = calcularIMC(peso, altura)
-        const categoriaImc = verificarCategoriaImc(imc)
+        let imc = calcularIMC(peso, altura)
+        let categoriaImc = verificarCategoriaImc(imc)
 
         console.log(`IMC calculado: ${imc.toFixed(2)}\nCategoria: ${categoriaImc}`)
-        return true;
+    }else{
+        console.log('Erro ao processar.')
+        return false
     }
-    return false
 }
 
 module.exports = {processarImc}

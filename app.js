@@ -148,6 +148,9 @@ function mostrarMenu(){
                     })
                 })
             })
+        }else if(operacaoEscolhida == '6'){
+            console.log('Volte logo!')
+            entradaDeDados.close()
         }
     })
 }
