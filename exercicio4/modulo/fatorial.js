@@ -1,10 +1,10 @@
 // função de validação dos dados
 function validarEntrada(numero){
-    if (numero === ''){
+    if(numero === ''){
         console.log('A entrada não pode estar vazia.')
         return false
     }
-    if (isNaN(numero)){
+    if(isNaN(numero)){
         console.log('A entrada deve ser um número válido.')
         return false
     }

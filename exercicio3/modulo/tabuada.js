@@ -1,22 +1,22 @@
 // função de validação dos dados
-function validarEntradas(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal) {
-    if (isNaN(tabuadaInicial) || isNaN(tabuadaFinal) || isNaN(contadorInicial) || isNaN(contadorFinal)) {
+function validarEntradas(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal){
+    if(isNaN(tabuadaInicial) || isNaN(tabuadaFinal) || isNaN(contadorInicial) || isNaN(contadorFinal)){
         console.log('Todos os valores devem ser numéricos.')
         return false
     }
-    if (tabuadaInicial < 2 || tabuadaInicial > 100 || tabuadaFinal < 2 || tabuadaFinal > 100) {
+    if(tabuadaInicial < 2 || tabuadaInicial > 100 || tabuadaFinal < 2 || tabuadaFinal > 100){
         console.log('A tabuada deve estar entre 2 e 100.')
         return false
     }
-    if (contadorInicial < 1 || contadorInicial > 50 || contadorFinal < 1 || contadorFinal > 50) {
+    if(contadorInicial < 1 || contadorInicial > 50 || contadorFinal < 1 || contadorFinal > 50){
         console.log('O contador deve estar entre 1 e 50.')
         return false
     }
-    if (tabuadaFinal < tabuadaInicial) {
+    if(tabuadaFinal < tabuadaInicial){
         console.log('A tabuada final não pode ser menor que a inicial.')
         return false
     }
-    if (contadorFinal < contadorInicial) {
+    if(contadorFinal < contadorInicial){
         console.log('O contador final não pode ser menor que o inicial.')
         return false
     }
@@ -24,7 +24,7 @@ function validarEntradas(tabuadaInicial, tabuadaFinal, contadorInicial, contador
 }
 
 //função para calcular a tabuada
-function calcularTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal) {
+function calcularTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal){
     let resultado = ''  //guardando o resultado
 
     let tabuada = tabuadaInicial
@@ -45,7 +45,7 @@ function calcularTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contador
 }
 
 //função principal de processamento
-function processarTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal) {
+function processarTabuada(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal){
     let validacao = validarEntradas(tabuadaInicial, tabuadaFinal, contadorInicial, contadorFinal)
     if (validacao !== true){
         return validacao  //se a validação falhar, retorna a mensagem de erro
